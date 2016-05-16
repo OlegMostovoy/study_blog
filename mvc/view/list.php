@@ -16,10 +16,8 @@
 	<tbody>
 	 <?foreach ($data as $key => $value)
 	 {?>
-	 <form action="delete.php" method="post">
 	    <tr>
 	        <input type='hidden' name='id' value="<?=$item['id']?>">
-
 			<td><? echo $value['id'];?></td>
 			<td><? echo $value['name'];?></td>
 			<td><? echo $value['login'];?></td>
@@ -27,10 +25,9 @@
 			<td><? echo $value['email'];?></td>
 			<td><? echo $value['role'];?></td>
 			<td><a href="/mvc/index.php?edit=<?=$value['id']?>"> edit</a></td>
-			<td><a href="/mvc/index.php?delete=<?=$value['id']?>"> delete</a></td>
-			
+			<td><a href="/mvc/index.php?delete=<?=$value['id']?>"> delete</a></td>	
 		</tr>
-	</form>
+	
 		<?}?>
 	</tbody>
 </table>

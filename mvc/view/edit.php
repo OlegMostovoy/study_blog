@@ -1,5 +1,4 @@
 <? if($data){
-        	
         	?>
         	<div class="form-group">
                 <form action="index.php" method="post">

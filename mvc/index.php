@@ -1,4 +1,10 @@
 
-<? include "C:\OpenServer\domains\mysite.site\mvc\header.php" ?>
-
-<? include "C:\OpenServer\domains\mysite.site\mvc\controller\controller.php" ?>
+<? 
+include "\header.php"; 
+include "\controller\controller.php";
+$view='';
+$data=array();
+$UserController = new UserController();
+$UserController->Process($view, $data); 
+include "\work_area.php";
+?>

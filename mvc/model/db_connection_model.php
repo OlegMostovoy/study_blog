@@ -2,20 +2,24 @@
 
 class Profiles 
 {
-    var $db_connection;
-    var $db_select;
-    var $result;
+    protected $db_connection;
+    protected $db_select;
+    protected $result;
+    protected $server;
+    protected $login;
+    protected $database;
+    protected $password;
 
 	function __construct()
 	{
-		echo("connection");
+		//echo("connection");
 		$this->server="localhost";
         $this->database="profiles";
         $this->login ="root";
         $this->password="";
         $this->db_connection=mysql_connect($this->server, $this->login,$this->password="");
         $this->db_select=mysql_select_db( $this->database);
-        echo $this->db_select;
+        //echo $this->db_select;
 	}
 
 	public function SendQuery($qery)
@@ -26,14 +30,14 @@ class Profiles
 	}
 	public function GetAllUsers()
 	{
-		$data=array();
+		$querydata=array();
 		$query="SELECT * FROM profiles_tab";
         $query_result=mysql_query($query);
 		while ($item=mysql_fetch_array( $query_result)) {
-			 $data[$item['id']]=$item;
+			 $querydata[$item['id']]=$item;
 		}
 		
-		return $data;
+		return $querydata;
 		
 	}
 	
@@ -58,7 +62,7 @@ class Profiles
          //$update_query="UPDATE `profiles_tab` SET `name`=".$_POST["name"].",`login`=".$_POST["login"].",`password`=".$_POST["password"].",`email`=".$_POST["email"].",`role`=".$_POST["role"]." WHERE id=".$_POST["id"];
 
 
-        echo  $update_query; 
+        //echo  $update_query; 
         $result=mysql_query($update_query);
         if($query_result)
         {
