@@ -1,5 +1,6 @@
 <?if($data){
 	?>
+	
 <table class="table table-hover">
 	<thead>
 		<tr>
@@ -24,8 +25,8 @@
 			<td><? echo $value['password'];?></td>
 			<td><? echo $value['email'];?></td>
 			<td><? echo $value['role'];?></td>
-			<td><a href="/mvc/index.php?edit=<?=$value['id']?>"> edit</a></td>
-			<td><a href="/mvc/index.php?delete=<?=$value['id']?>"> delete</a></td>	
+			<td><a href="/index.php?edit=<?=$value['id']?>"> edit</a></td>
+			<td><a href="/index.php?delete=<?=$value['id']?>"> delete</a></td>	
 		</tr>
 	
 		<?}?>

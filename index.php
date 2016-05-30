@@ -1,6 +1,8 @@
 
 <? 
 include "\header.php"; 
+include'\model\db_connection_singletone.php';
+DataBaseConnection::getInstance();
 include "\controller\controller.php";
 $view='';
 $data=array();

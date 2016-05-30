@@ -69,11 +69,6 @@ class UserController extends Profiles
         
         	$view="list";
         }
-
-
-
-
-
 	}
 }
 

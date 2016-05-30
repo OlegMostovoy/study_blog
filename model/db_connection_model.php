@@ -32,7 +32,8 @@ class Profiles
 	{
 		$querydata=array();
 		$query="SELECT * FROM profiles_tab";
-        $query_result=mysql_query($query);
+        echo $query."!</br>";
+        $query_result=DataBaseConnection::query($query);
 		while ($item=mysql_fetch_array( $query_result)) {
 			 $querydata[$item['id']]=$item;
 		}
@@ -43,7 +44,7 @@ class Profiles
 	
 	public function GetUsersByID($ID){
 		$query="SELECT * FROM profiles_tab WHERE id=".$ID;
-        $query_result=mysql_query($query);
+        $query_result=DataBaseConnection::query($query);
         if($query_result)
         {
         	return $item=mysql_fetch_array($query_result);;
@@ -63,7 +64,7 @@ class Profiles
 
 
         //echo  $update_query; 
-        $result=mysql_query($update_query);
+        $result=DataBaseConnection::query($update_query);
         if($query_result)
         {
         	return $item=mysql_fetch_array($query_result);;
