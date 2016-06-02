@@ -80,6 +80,20 @@ class Profiles
 
 
 
+    public function AuthorizeUser($User, $Pass){
+        $query="SELECT * FROM `profiles`.`profiles_tab` WHERE 
+        login ='".$User."' AND
+        password='".$Pass."'";
+        $query_result=DataBaseConnection::query($query);
+        if($query_result)
+        {
+            return $item=mysql_fetch_array($query_result);;
+        }
+        return false;
+    }
+
+
+
 }
 
 

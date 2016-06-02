@@ -6,6 +6,7 @@ include'..\model\db_connection_singletone.php';
 DataBaseConnection::getInstance();
 include "..\model\db_articles_modele.php.";
 include "..\controller\ArticlesController.php";
+session_start();
 $view='';
 $data=array();
 $ArticleController = new ArticlesController();

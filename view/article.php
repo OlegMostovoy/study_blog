@@ -1,7 +1,16 @@
 <?if($data){?>
+<pre>!!!<?print_r($_SESSION)?>!!!</pre>
 
-<?} ?>
 <div class="form-group">
+<? if($_SESSION["authorized"]=='Y' ){?>
+   <p> <b><?=$_SESSION["username"]?></b> <a href="/auth.php">Exit</a> </p>
+<?}
+  if($_SESSION["authorized"]!='Y' )
+        {?>
+              <a href="/auth.php">Enter</a>
+        <?}?>
+
+ 
 <?foreach ($data as $item ) {?>
 	
 
@@ -15,7 +24,11 @@
         <b>
             <?=$item["author_name"]["name"]?>
         </b></div>
+        <? if($_SESSION["authorized"]=='Y' && $_SESSION["userid"]==$item["author_name"]["id"] )
+        {?>
         <a href="/article/index.php?edit=<?=$item["id"]?>">edit article</a>
+        <?}?>
 
         <?}?>
+     <?} ?>
 </div>
