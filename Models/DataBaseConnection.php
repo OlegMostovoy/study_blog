@@ -1,6 +1,4 @@
-<?php /**
-* 
-*/
+<?php 
 class DataBaseConnection 
 {
 	static private $instance;
@@ -32,7 +30,7 @@ class DataBaseConnection
 	}
 
 	public static function query($query){
-		echo("db_connection CREATED!");
+		echo("QUERY: ");
 		$obj=self::$instance;
 		if (isset($obj->dbselect)){
 			  echo $query."</br>";

@@ -1,16 +1,15 @@
-
 <? 
 include "..\header.php"; 
 include'..\Models\DataBaseConnection.php';
 
 DataBaseConnection::getInstance();
-include "..\Models\Articles.php.";
-include "..\Controllers\ArticlesController.php";
+//include "..\Models\Authorization.php.";
+include "..\Controllers\AuthController.php";
 //session_start();
 $view='';
 $data=array();
-$ArticleController = new ArticlesController();
-$ArticleController->Process($view, $data); 
+$AuthController = new AuthController();
+$AuthController->Process($view, $data); 
 //include "\work_area.php";
 ?>
 

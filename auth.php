@@ -3,18 +3,18 @@ include "\header.php";
 include "\\functions\auth_func.php";
 if ( $_POST["username"] && $_POST["pass"] ){
 
-include'\model\db_connection_singletone.php';
+include'\Models\DataBaseConnection.php';
 
 DataBaseConnection::getInstance();
 
-include "\model\db_connection_model.php";
+include "\Models\Profiles.php";
 
 
 
 
 
 Logout();
-session_start();
+///session_start();
 if(Login($_POST["username"],$_POST["pass"])){
 
 	header("Location: /article/index.php");

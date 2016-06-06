@@ -2,7 +2,8 @@
 
 <div class="col-md-6 col-sm-3 vcenter">
 <div class="center-block">
-   <?if($data){?>
+
+   <?if($data && $_SESSION["authorized"]=='Y' && $_SESSION["userid"]==$data["author_name"]["id"]){?>
     <form action="../article/index.php" method="post">
          <input type="hidden"  name="id" value="<?=$data["id"]?>">
         <div class="form-group row">

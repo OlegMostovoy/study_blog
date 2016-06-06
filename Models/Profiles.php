@@ -80,7 +80,7 @@ class Profiles
 
 
 
-    public function AuthorizeUser($User, $Pass){
+    public function DataForLogin($User, $Pass){
         $query="SELECT * FROM `profiles`.`profiles_tab` WHERE 
         login ='".$User."' AND
         password='".$Pass."'";

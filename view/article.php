@@ -3,11 +3,11 @@
 
 <div class="form-group">
 <? if($_SESSION["authorized"]=='Y' ){?>
-   <p> <b><?=$_SESSION["username"]?></b> <a href="/auth.php">Exit</a> </p>
+   <p> <b><?=$_SESSION["username"]?></b> <a href="/authorization/index.php?logout=Y">Exit</a> </p>
 <?}
   if($_SESSION["authorized"]!='Y' )
         {?>
-              <a href="/auth.php">Enter</a>
+              <a href="/authorization/index.php">Enter</a>
         <?}?>
 
  

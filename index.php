@@ -1,9 +1,10 @@
 
 <? 
 include "\header.php"; 
-include'\model\db_connection_singletone.php';
+include'\Models\DataBaseConnection.php';
 DataBaseConnection::getInstance();
-include "\controller\controller.php";
+include "\Controllers\UserController.php";
+
 $view='';
 $data=array();
 $UserController = new UserController();

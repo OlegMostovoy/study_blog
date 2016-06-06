@@ -63,7 +63,7 @@ class Articles
                 $author=mysql_fetch_array($author_query_result);
                 $item["author_name"]=$author;
             }
-            ?><pre><?print_r($item);?></pre><?
+          
             return $item;
 
 	    }
@@ -75,6 +75,7 @@ class Articles
         $query_result=DataBaseConnection::query($query);
         if($query_result)
         {
+              ?><pre><?print_r($item);?></pre><?
             $item=mysql_fetch_array($query_result);
             $query="SELECT name, id FROM profiles.profiles_tab";
             $author_query_result=DataBaseConnection::query($query);
@@ -93,15 +94,7 @@ class Articles
 
     public function UpdateArticleByID($ID,$Data){
 		$update_query="UPDATE `profiles`.`articles_tab` SET title='".$Data["title"]."',author='".$Data["author"]."',article_text='".$Data["article_text"]."' WHERE id=".(integer)$ID;
-        
-//          $update_query="UPDATE `profiles`.`articles_tab`
-// SET `title` = '".$Data["title"]."', `article_text` = 'article_text'
-  
- 
-// WHERE `id` = 1";
 
-
-        //echo  $update_query; 
         $result=DataBaseConnection::query($update_query);
         if($result)
         {

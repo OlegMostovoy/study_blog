@@ -21,7 +21,12 @@ function Logout()
 	//setcookie('username', '', time() - 1);	
 	
 	
-	unset($_SESSION);	
+	    unset($_SESSION['username']); 
+		unset($_SESSION['userid']);
+		unset($_SESSION['authorized']);
+	//unset($_SESSION);
+session_destroy();
+	?><pre><?print_r($_SESSION);?></pre><?
 }
 
 
