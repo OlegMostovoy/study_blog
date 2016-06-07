@@ -11,15 +11,15 @@ class AuthController extends Authorization
 	public function Process(&$view ,&$data)
 	{
 		
-		if($_POST['username'] && $_POST['pass'] )
+		if($_POST['login'] && $_POST['pass'] )
         {
         	
             $this->Logout();
            
-        	if($this->Login($_POST['username'], $_POST['pass']) )
+        	if($this->Login($_POST) )
             {
-              header("Location: /article/index.php");
-              exit();
+              //header("Location: /article/index.php");
+              //exit();
             }
         }
         
@@ -31,6 +31,7 @@ class AuthController extends Authorization
         }elseif ($_GET['logout']) 
         {
         	 $this->Logout();
+             //header("Refresh:3");
         	$view="authorization";
         	
         }else

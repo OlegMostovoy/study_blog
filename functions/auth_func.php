@@ -5,7 +5,6 @@ function Login($username, $pass)
 	$UserData=Profiles::AuthorizeUser($username, $pass);
 	if ($UserData)
 	{
-
 		$_SESSION['username'] = $UserData["name"];
 		$_SESSION['userid'] = $UserData["id"];
 		$_SESSION['authorized'] = "Y";
@@ -25,7 +24,7 @@ function Logout()
 		unset($_SESSION['userid']);
 		unset($_SESSION['authorized']);
 	//unset($_SESSION);
-session_destroy();
+        session_destroy();
 	?><pre><?print_r($_SESSION);?></pre><?
 }
 

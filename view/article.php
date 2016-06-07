@@ -1,5 +1,5 @@
 <?if($data){?>
-<pre>!!!<?print_r($_SESSION)?>!!!</pre>
+<pre>!!!<?print_r($_COOKIE['username'])?>!!!</pre>
 
 <div class="form-group">
 <? if($_SESSION["authorized"]=='Y' ){?>
