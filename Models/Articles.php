@@ -13,6 +13,7 @@ class Articles
 	function __construct()
 	{
         $this->table ="articles_tab";
+        echo "Articles constuctor";
 	}
 
 	public function SendQuery($qery)
@@ -49,8 +50,37 @@ class Articles
 
 		
 	}
+    public function GetAllArticles()
+    {
+        $querydata=array();
+        
+        $query="SELECT * FROM ".$this->table;
+        $query_result=DataBaseConnection::query($query);
+        if($query_result)
+        {
+            while ($item=mysql_fetch_array( $query_result))
+            {
+                $query="SELECT name, id FROM profiles.profiles_tab WHERE id=".$item["author"];
+                $author_query_result=DataBaseConnection::query($query);
+                if($author_query_result)
+                {
+                    $author=mysql_fetch_array($author_query_result);
+                    $item["author_name"]=$author;
+                }
+                $querydata[]=$item;
+                
+             }
+                 ?><pre><?print_r($querydata);?></pre><? 
+            return $querydata;
+           
+        }
+        return false;
+
+        
+    }
 	
 	public function GetArticleByID($ID){
+        echo "ID: ".$ID;
 		$query="SELECT * FROM ".$this->table." WHERE id=".$ID;
         $query_result=DataBaseConnection::query($query);
         if($query_result)
@@ -68,6 +98,28 @@ class Articles
 
 	    }
 	    return false;
+    }
+
+    public function GetByID($article_id){
+        $ID=$article_id["id"];
+        echo "ID: ".$ID;
+        $query="SELECT * FROM ".$this->table." WHERE id=".$ID;
+        $query_result=DataBaseConnection::query($query);
+        if($query_result)
+        {
+            $item=mysql_fetch_array($query_result);
+            $query="SELECT name, id FROM profiles.profiles_tab WHERE id=".$item["author"];
+            $author_query_result=DataBaseConnection::query($query);
+            if($author_query_result)
+            {
+                $author=mysql_fetch_array($author_query_result);
+                $item["author_name"]=$author;
+            }
+          
+            return $item;
+
+        }
+        return false;
     }
 
     public function GetArticleEditFormByID($ID){

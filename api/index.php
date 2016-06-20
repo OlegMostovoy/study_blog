@@ -2,7 +2,7 @@
 <?
 header('Content-type: text/html; charset=UTF-8');
 echo"test file: ";
-echo file_exists("test.php");
+
 //$_POST
 if(count($_GET)>0){
 	require_once "APIProcess.php";
@@ -10,8 +10,8 @@ if(count($_GET)>0){
 	print_r($_GET);
 ?><ul><?
 	foreach ($_REQUEST as $func => $params) {
-		echo "<li> f ".$func." p ".$params."</li>";
-	    $APIProcess= new APIProcess($func,$params="");
+		echo "<li> f= ".$func." p= ".$params."</li>";
+	    $APIProcess= new APIProcess($func,$params);
 		$APIProcess->CallFunction();
 		break;
 	}
