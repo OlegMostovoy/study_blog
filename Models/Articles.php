@@ -13,19 +13,65 @@ class Articles
 	function __construct()
 	{
         $this->table ="articles_tab";
-        echo "Articles constuctor";
 	}
 
-	public function SendQuery($qery)
-	{
-		$this->result=mysql_query($query);
-		return $this->result;
-		
-	}
-	public function GetAllUsers()
-	{
-		$querydata=array();
-		
+
+
+
+    public function DeleteUsersByID($ID){
+		$delete_query="DELETE FROM profiles_tab WHERE id=".$ID;
+        $delete=mysql_query($delete_query);
+	    return $delete;
+    }
+
+    public function save($id)
+    {
+    }
+
+    public function update($data)
+    {
+        $update_query="UPDATE `profiles`.`articles_tab` SET title='".$data["title"]."',author='".$data["author"]."',article_text='".$data["article_text"]."' WHERE id=".(integer)$data["id"];
+
+        $result=DataBaseConnection::query($update_query);
+        if($result)
+        {
+            return $item=mysql_fetch_array($result);;
+        }
+        return false;  
+    }
+    
+    public function delete($id)
+    {
+        $delete_query="DELETE FROM articles_tab WHERE id=".$id;
+        $delete=mysql_query($delete_query);
+        return $delete;     
+    }
+
+    public function get($id)
+    {
+        echo "get";
+        $query="SELECT * FROM ".$this->table." WHERE id=".$id;
+        // $query_result=DataBaseConnection::query($query);
+        // if($query_result)
+        // {
+            // $item=mysql_fetch_array($query_result);
+            // $query="SELECT name, id FROM profiles.profiles_tab WHERE id=".$item["author"];
+            // $author_query_result=DataBaseConnection::query($query);
+            // if($author_query_result)
+            // {
+                // $author=mysql_fetch_array($author_query_result);
+                // $item["author_name"]=$author;
+            // }
+          // 
+            // return $item;
+
+        // }
+        // return false;     
+    }
+
+    public function getlist()
+    {
+        $querydata=array();
         $query="SELECT * FROM ".$this->table;
         $query_result=DataBaseConnection::query($query);
         if($query_result)
@@ -42,14 +88,12 @@ class Articles
                 $querydata[]=$item;
                 
              }
-                 ?><pre><?print_r($querydata);?></pre><? 
             return $querydata;
            
         }
-        return false;
+        return false;        
+    }
 
-		
-	}
     public function GetAllArticles()
     {
         $querydata=array();
@@ -74,18 +118,16 @@ class Articles
             return $querydata;
            
         }
-        return false;
-
-        
+        return false;  
     }
-	
-	public function GetArticleByID($ID){
+    
+    public function GetArticleByID($ID){
         echo "ID: ".$ID;
-		$query="SELECT * FROM ".$this->table." WHERE id=".$ID;
+        $query="SELECT * FROM ".$this->table." WHERE id=".$ID;
         $query_result=DataBaseConnection::query($query);
         if($query_result)
         {
-        	$item=mysql_fetch_array($query_result);
+            $item=mysql_fetch_array($query_result);
             $query="SELECT name, id FROM profiles.profiles_tab WHERE id=".$item["author"];
             $author_query_result=DataBaseConnection::query($query);
             if($author_query_result)
@@ -96,8 +138,8 @@ class Articles
           
             return $item;
 
-	    }
-	    return false;
+        }
+        return false;
     }
 
     public function GetByID($article_id){
@@ -145,24 +187,15 @@ class Articles
     }
 
     public function UpdateArticleByID($ID,$Data){
-		$update_query="UPDATE `profiles`.`articles_tab` SET title='".$Data["title"]."',author='".$Data["author"]."',article_text='".$Data["article_text"]."' WHERE id=".(integer)$ID;
+        $update_query="UPDATE `profiles`.`articles_tab` SET title='".$Data["title"]."',author='".$Data["author"]."',article_text='".$Data["article_text"]."' WHERE id=".(integer)$ID;
 
         $result=DataBaseConnection::query($update_query);
         if($result)
         {
-        	return $item=mysql_fetch_array($result);;
-	    }
-	    return false;
+            return $item=mysql_fetch_array($result);;
+        }
+        return false;
     }
-
-    public function DeleteUsersByID($ID){
-		$delete_query="DELETE FROM profiles_tab WHERE id=".$ID;
-        $delete=mysql_query($delete_query);
-	    return $delete;
-    }
-
-
-
 }
 
 

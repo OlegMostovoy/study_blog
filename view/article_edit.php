@@ -1,5 +1,5 @@
 <link rel='stylesheet' href='/css/bootstrap/css/bootstrap.min.css' type='text/css' media='all'>
-
+<pre><?print_r($data);?></pre>
 <div class="col-md-6 col-sm-3 vcenter">
 <div class="center-block">
 

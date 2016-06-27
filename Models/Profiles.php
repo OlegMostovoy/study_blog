@@ -12,22 +12,80 @@ class Profiles
 
 	function __construct()
 	{
-		//echo("connection");
-		$this->server="localhost";
-        $this->database="profiles";
-        $this->login ="root";
-        $this->password="";
-        $this->db_connection=mysql_connect($this->server, $this->login,$this->password="");
-        $this->db_select=mysql_select_db( $this->database);
-        //echo $this->db_select;
+		// echo("connection");
+		// $this->server="localhost";
+        // $this->database="profiles";
+        // $this->login ="root";
+        // $this->password="";
+        // $this->db_connection=mysql_connect($this->server, $this->login,$this->password="");
+        // $this->db_select=mysql_select_db( $this->database);
+        // echo $this->db_select;
 	}
 
-	public function SendQuery($qery)
-	{
-		$this->result=mysql_query($query);
-		return $this->result;
-		
-	}
+    public function save($id)
+    {
+
+    }
+
+    public function update($data)
+    {
+        $update_query="UPDATE profiles_tab SET 
+        name='".$data["name"]."', 
+        login='".$data["login"]."', 
+        password='".$data["password"]."', 
+        email='".$data["email"]."',
+        role='".$data["role"]."' WHERE id=".(integer)$data["id"];
+        $result=DataBaseConnection::query($update_query);
+        if($query_result)
+        {
+            return $item=mysql_fetch_array($query_result);;
+        }
+        return false;
+    }
+
+    public function delete($id)
+    {
+        $delete_query="DELETE FROM profiles_tab WHERE id=".$ID;
+        $delete=mysql_query($delete_query);
+        return $delete;
+    }
+
+    public function get($id)
+    {
+        $query="SELECT * FROM profiles_tab WHERE id=".$id;
+        $query_result=DataBaseConnection::query($query);
+        if($query_result)
+        {
+            //return $item=mysql_fetch_array($query_result);;
+            return mysql_fetch_array($query_result);
+        }
+        return false;
+
+    }
+
+    public function getlist()
+    {
+        $querydata=array();
+        $query="SELECT * FROM profiles_tab";
+        //echo $query."!</br>";
+        $query_result=DataBaseConnection::query($query);
+        while ($item=mysql_fetch_array( $query_result)) {
+            $querydata[$item['id']]=$item;
+        }
+        if(count($querydata))
+        {
+            return $querydata;
+        }
+        return false;
+
+    }
+ 
+
+
+
+
+
+	
 	public function GetAllUsers()
 	{
 		$querydata=array();
@@ -47,7 +105,8 @@ class Profiles
         $query_result=DataBaseConnection::query($query);
         if($query_result)
         {
-        	return $item=mysql_fetch_array($query_result);;
+        	//return $item=mysql_fetch_array($query_result);;
+            return mysql_fetch_array($query_result);
 	    }
 	    return false;
     }
@@ -59,11 +118,6 @@ class Profiles
         password='".$UserData["password"]."', 
         email='".$UserData["email"]."',
         role='".$UserData["role"]."' WHERE id=".(integer)$ID;
-        
-         //$update_query="UPDATE `profiles_tab` SET `name`=".$_POST["name"].",`login`=".$_POST["login"].",`password`=".$_POST["password"].",`email`=".$_POST["email"].",`role`=".$_POST["role"]." WHERE id=".$_POST["id"];
-
-
-        //echo  $update_query; 
         $result=DataBaseConnection::query($update_query);
         if($query_result)
         {

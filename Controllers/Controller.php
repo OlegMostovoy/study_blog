@@ -1,12 +1,19 @@
 <?
- include "\Models\UserController.php";
+ //include "\Models\UserController.php";
 
 class Controller 
 {
+	private  $ModejObject=null;
 
-	function __construct()
+	function __construct($modelName)
 	{
-		//parent::__construct();
+		if($modelName!=""){
+			include_once "..\Models\\".$modelName.".php";
+
+			$this->ModejObject=new $modelName;
+		}else{
+			echo "Controller: model name is empty";
+		}
 	}
 	
 	public function Process(&$view ,&$data)
@@ -37,6 +44,32 @@ class Controller
         	$view="list";
         }
 	}
+
+	public function PostProcess()
+	{
+
+	}
+	
+	public function PutProcess($data)
+	{
+		return $this->ModejObject->update($data);
+	}
+	public function GetIndexProcess($id)
+	{
+		return $this->ModejObject->get($id);
+	}
+
+	public function GetListProcess()
+	{
+		return $this->ModejObject->getlist();
+
+	}
+	public function DeletetProcess($id)
+	{
+		return $this->ModejObject->delete($id);
+	}
+	
+
 }
 
 ?>

@@ -33,7 +33,7 @@ class DataBaseConnection
 		//echo("QUERY: ");
 		$obj=self::$instance;
 		if (isset($obj->dbselect)){
-			  echo $query."</br>";
+			//  echo $query."</br>";
 			 $result=mysql_query($query);
 			 return $result;
 		}
