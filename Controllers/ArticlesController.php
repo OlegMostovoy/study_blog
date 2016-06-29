@@ -1,5 +1,6 @@
 <?php 
 include "..\Models\Profiles.php";
+include_once"..\Models\Tags.php";
 include "Controller.php";
 class ArticlesController extends Controller
 {
@@ -21,7 +22,7 @@ class ArticlesController extends Controller
         if($_GET['edit'])
         {
             $data=$this->GetIndexProcess($_GET['edit']);
-            //$data["authors"]=$Users->getlist();
+           
             $view="article_edit";
         
         }elseif ($_GET['delete']) 
@@ -37,10 +38,28 @@ class ArticlesController extends Controller
 	}
     public function GetIndexProcess($id)
     {
-        //$data=parent::GetIndexProcess($id);
-        $data=$this->GetIndexProcess($id);
+        $data=parent::GetIndexProcess($id);
         $Users= new Profiles;
-        $data["authors"]=$Users->GetAllUsers();
+        $data["authors"]=$Users->getlist();
+        $Tags = new Tags;
+        $data["tags"]=$Tags->getlist($data["id"]);
+        echo "<pre>tags "; print_r($data["tags"]); echo "</pre>";
+
+        return $data;
+    }
+
+    public function GetListProcess()
+    {
+        $Tags = new Tags;
+        $data=parent::GetListProcess();
+       //echo "<pre>tags "; print_r($data); echo "</pre>";
+        foreach ( $data as $value) {
+            $value["tags"]=$Tags->getlist($value["id"]);
+             echo "<pre>tags "; print_r($value["tags"]); echo "</pre>";
+        }
+        
+       
+
         return $data;
     }
 }

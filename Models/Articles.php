@@ -43,7 +43,7 @@ class Articles
     public function delete($id)
     {
         $delete_query="DELETE FROM articles_tab WHERE id=".$id;
-        $delete=mysql_query($delete_query);
+        $delete=DataBaseConnection::query($delete_query);
         return $delete;     
     }
 
@@ -51,22 +51,22 @@ class Articles
     {
         echo "get";
         $query="SELECT * FROM ".$this->table." WHERE id=".$id;
-        // $query_result=DataBaseConnection::query($query);
-        // if($query_result)
-        // {
-            // $item=mysql_fetch_array($query_result);
-            // $query="SELECT name, id FROM profiles.profiles_tab WHERE id=".$item["author"];
-            // $author_query_result=DataBaseConnection::query($query);
-            // if($author_query_result)
-            // {
-                // $author=mysql_fetch_array($author_query_result);
-                // $item["author_name"]=$author;
-            // }
-          // 
-            // return $item;
+        $query_result=DataBaseConnection::query($query);
+         if($query_result)
+        {
+            $item=mysql_fetch_array($query_result);
+            $query="SELECT name, id FROM profiles.profiles_tab WHERE id=".$item["author"];
+            $author_query_result=DataBaseConnection::query($query);
+            if($author_query_result)
+            {
+                $author=mysql_fetch_array($author_query_result);
+                $item["author_name"]=$author;
+            }
+          
+            return $item;
 
-        // }
-        // return false;     
+        }
+        return false;     
     }
 
     public function getlist()

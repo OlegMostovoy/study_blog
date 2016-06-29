@@ -17,8 +17,8 @@ $ArticleController->Process($view, $data);
 <?
 if($view){
 	//echo $view;
-	echo "<br/>..\\view\\".$view.".php<br/>";
-	print_r($data);
+	//echo "<br/>..\\view\\".$view.".php<br/>";
+	//print_r($data);
 	//$view_path="view"."\\".$view.".php";
- //include"..\\view\\".$view.".php";
+ include"..\\view\\".$view.".php";
  } ?>

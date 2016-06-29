@@ -54,7 +54,9 @@ class APIProcess
 			}
 			else
 			{
-				echo json_encode($obj->$func($params[id]));
+				//print_r($params["id"]);
+				echo json_encode($obj->$func($params["id"]));
+
 				return $obj->$func($params["id"]);
 			}
 		}else
