@@ -1,0 +1,10 @@
+Articles
+/api/?Articles.get={"id":"1"} -get article with id=1 
+return {"0":"article","title":"article","1":"12","author":"12","2":"article_text","article_text":"article_text","3":null,"date":null,"4":"1","id":"1","author_name":{"0":"Ivan","name":"Ivan","1":"12","id":"12"}
+
+/api/?Articles.getlist  -get all articles
+return [{"0":"article","title":"article","1":"12","author":"12","2":"article_text","article_text":"article_text","3":null,"date":null,"4":"1","id":"1","author_name":{"0":"Ivan","name":"Ivan","1":"12","id":"12"}},{"0":"Article 2","title":"Article 2","1":"11","author":"11","2":"article_text","article_text":"some text","3":null,"date":null,"4":"2","id":"2","author_name":{"0":"Oleg111","name":"Oleg111","1":"11","id":"11"}},{"0":"Fish text","title":"Fish text","1":"14","author":"14","2":"some text","article_text":"some text","3":null,"date":null,"4":"3","id":"3","author_name":{"0":"Victor","name":"Victor","1":"14","id":"14"}}]
+
+/api/?Articles.update={"id":"1","title":"new title","article_text":"new text","author":"11"} update article "author" - author id
+
+/api/?Articles.delete={"id":"1"} delete article with id=1

@@ -1,5 +1,5 @@
 <?
-
+include_once"..\Models\Tags.php";
 class Articles 
 {
     protected $db_connection;
@@ -24,8 +24,36 @@ class Articles
 	    return $delete;
     }
 
-    public function save($id)
+    public function save($data)
     {
+        var_dump($data);
+        if($data['author']=="")
+        {
+            $data['author']=NULL;
+        }
+        else
+        {
+         $data['author']= "'".$data['author']."'";
+        }
+
+        $query="INSERT INTO `profiles`.`".$this->table."`
+            (`title`,
+             `author`,
+             `article_text`)
+            VALUES ('".$data["title"]."',
+           ".$data["author"].",
+           '".$data["article_text"]."')";
+
+        if(count($data['tags'])>0)
+        {
+            $Tags = new Tags;
+            $arTags=$Tags->parceTags($data['tags']);
+
+            foreach ($arTags as $key => $value) 
+            {
+                $Tags->save($value);
+            }
+        }
     }
 
     public function update($data)
@@ -33,6 +61,7 @@ class Articles
         $update_query="UPDATE `profiles`.`articles_tab` SET title='".$data["title"]."',author='".$data["author"]."',article_text='".$data["article_text"]."' WHERE id=".(integer)$data["id"];
 
         $result=DataBaseConnection::query($update_query);
+
         if($result)
         {
             return $item=mysql_fetch_array($result);;
@@ -41,15 +70,13 @@ class Articles
     }
     
     public function delete($id)
-    {
-        $delete_query="DELETE FROM articles_tab WHERE id=".$id;
+        $delete_query="DELETE FROM `profiles`.`".$this->table."` WHERE `id`='".(integer)$id."'";
         $delete=DataBaseConnection::query($delete_query);
         return $delete;     
     }
 
     public function get($id)
     {
-        echo "get";
         $query="SELECT * FROM ".$this->table." WHERE id=".$id;
         $query_result=DataBaseConnection::query($query);
          if($query_result)

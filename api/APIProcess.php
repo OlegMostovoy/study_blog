@@ -13,16 +13,6 @@ class APIProcess
 		$this->FunctionName=explode("_", strtolower($FuncName));
 	}
 
-	// public function APICreateObject($APIName){
-	// 	require_once "APIBase.php";
-	// 	require_once $APIName.".php";
-	// 	echo "<br/> class:".$APIName;
-	// 	$APIObject= new $APIName;
-
-	// 	return $APIObject;
-
-	// }
-
 	public function APICreateObject($APIName){
 		require_once "..\Models\\".$APIName.".php";
 		$APIObject= new $APIName;
@@ -49,15 +39,17 @@ class APIProcess
 
 			if(count($params)>1)
 			{
+
+				
                 echo json_encode($obj->$func($params));
+                $response
 				//return $obj->$func($params);
 			}
 			else
 			{
-				//print_r($params["id"]);
 				echo json_encode($obj->$func($params["id"]));
 
-				return $obj->$func($params["id"]);
+				//return $obj->$func($params["id"]);
 			}
 		}else
 		{

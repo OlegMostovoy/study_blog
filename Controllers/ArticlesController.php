@@ -1,7 +1,7 @@
 <?php 
-include "..\Models\Profiles.php";
+include_once "..\Models\Profiles.php";
 include_once"..\Models\Tags.php";
-include "Controller.php";
+include_once "Controller.php";
 class ArticlesController extends Controller
 {
 
@@ -57,9 +57,6 @@ class ArticlesController extends Controller
             $value["tags"]=$Tags->getlist($value["id"]);
              echo "<pre>tags "; print_r($value["tags"]); echo "</pre>";
         }
-        
-       
-
         return $data;
     }
 }

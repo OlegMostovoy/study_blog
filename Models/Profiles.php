@@ -22,8 +22,23 @@ class Profiles
         // echo $this->db_select;
 	}
 
-    public function save($id)
+    public function save($data)
     {
+        $query="INSERT INTO `profiles`.`profiles_tab`
+            (
+             `name`,
+             `login`,
+             `password`,
+             `email`,
+             `role`)
+VALUES (
+        '".$data["name"]."',
+        '".$data["login"]."',
+        '".$data["password"]."',
+        '".$data["email"]."',
+        '".$data["role"]."')";
+        $result=DataBaseConnection::query($query);
+        return $result;
 
     }
 

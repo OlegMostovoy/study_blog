@@ -45,9 +45,9 @@ class Controller
         }
 	}
 
-	public function PostProcess()
+	public function PostProcess($data)
 	{
-
+		return $this->ModejObject->save($data);
 	}
 	
 	public function PutProcess($data)

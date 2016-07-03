@@ -1,6 +1,7 @@
 <?
 include_once"..\Models\DataBaseConnection.php";
 
+
 /**
 * 
 */
@@ -74,6 +75,23 @@ class Tags
 	$query="DELETE FROM  `profiles`.`".$this->table_name."` WHERE article_id=".$article_id;
        return DataBaseConnection::query($query);
           
+	}
+
+	public function parceTags($tagsString,$article_id="")
+	{
+		$tags_array=explode(",", $tagsString);
+		$result=array();
+
+		foreach ($tags_array as $key => $value) 
+		{
+			if($value!="")
+			{
+				$arrTag["article_id"]=$article_id;
+				$arrTag["tag"]=$value;
+				$result[]=$arrTag;
+			}	
+		}
+		return $result;
 	}
 	
 
