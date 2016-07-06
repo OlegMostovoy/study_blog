@@ -1,5 +1,6 @@
 <?
-include "/Profiles.php";
+include_once "/Profiles.php";
+include_once "../Oauth/Oauth.php";
 class Authorization 
 {
     
@@ -40,6 +41,19 @@ class Authorization
             $_SESSION['username'] = $UserData["name"];
             $_SESSION['userid'] = $UserData["id"];
             $_SESSION['authorized'] = "Y";
+
+            $oauth = new OAuth;
+            $token_key=$oauth->generteTokenKey($UserData["id"],$_SERVER["HTTP_HOST"]);
+            var_dump($UserData["id"]);
+            var_dump($_SERVER["HOST"]);
+
+            if($UserData["token"]!=$token_key)
+            {
+              var_dump($token_key);
+              $oauth->updateToken($token_key,$UserData["id"]);
+            }
+
+            
             
             if($arrData['remember']=='on')
             {

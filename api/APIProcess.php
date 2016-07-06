@@ -1,5 +1,5 @@
 <?
-include'..\Models\DataBaseConnection.php';
+include_once'..\Models\DataBaseConnection.php';
 /**
 * 
 */
@@ -42,7 +42,7 @@ class APIProcess
 
 				
                 echo json_encode($obj->$func($params));
-                $response
+               
 				//return $obj->$func($params);
 			}
 			else

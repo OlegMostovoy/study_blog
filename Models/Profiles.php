@@ -94,6 +94,21 @@ VALUES (
         return false;
 
     }
+
+    public function getByToken($token)
+    {
+          $query="SELECT * FROM profiles_tab WHERE token='".$token."'";
+          $result=DataBaseConnection::query($query);
+          if($result)
+          {
+$res=mysql_fetch_array($result);
+            echo "<pre>".$query;
+            print_r($res);
+            echo "</pre>";
+            return mysql_fetch_array($result);
+          }
+          return false;
+    }
  
 
 

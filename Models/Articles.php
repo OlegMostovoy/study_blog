@@ -64,12 +64,13 @@ class Articles
 
         if($result)
         {
-            return $item=mysql_fetch_array($result);;
+            return $item=mysql_fetch_array($result);
         }
         return false;  
     }
     
     public function delete($id)
+    {
         $delete_query="DELETE FROM `profiles`.`".$this->table."` WHERE `id`='".(integer)$id."'";
         $delete=DataBaseConnection::query($delete_query);
         return $delete;     

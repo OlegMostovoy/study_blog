@@ -2,15 +2,28 @@
 <?
 header('Content-type: text/html; charset=UTF-8');
 
-//$_POST
-if(count($_REQUEST)>0){
-	require_once "APIProcess.php";
-	//echo "<br/>is request<br/>";
-	//print_r($_REQUEST);
-	foreach ($_REQUEST as $func => $params) {
-	    $APIProcess= new APIProcess($func,$params);
-		$APIProcess->CallFunction();
-		break;
+
+if(count($_REQUEST)>0)
+{
+	include_once "../OAuth/OAuth.php";
+	$TokenAccess=false;
+	$oauth= new OAuth;
+	if($oauth->isToken()){
+		$TokenAccess=$oauth->checkTokenKey($_REQUEST["token"]);
+	}
+	if($TokenAccess)
+	{
+	    include_once "APIProcess.php";
+    
+	    foreach ($_REQUEST as $func => $params) {
+	        $APIProcess= new APIProcess($func,$params);
+	    	$APIProcess->CallFunction();
+	    	break;
+	    }
+	}
+	else
+	{
+     echo "error: token auth FALSE";
 	}
 }else{
 	echo "</br>request is empty"; 

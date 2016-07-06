@@ -1,0 +1,12 @@
+{
+    "name": "oleg/my.blog",
+    "require": {
+        "eden/oauth": "^4.0"
+    },
+    "authors": [
+        {
+            "name": "Oleg Mostovoy",
+            "email": "wolfmind@yandex.ru"
+        }
+    ]
+}

@@ -9,6 +9,7 @@ class DataBaseConnection
 	{
 		//echo("db_connection CREATED!");
 		$this->db_connection=mysql_connect("localhost", "root" ,"");
+		
         $this->dbselect=mysql_select_db("profiles");
 		
 	}

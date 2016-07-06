@@ -1,0 +1,146 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "d519ac31360e3950ae8b3d9b6da2e542",
+    "packages": [
+        {
+            "name": "eden/core",
+            "version": "4.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Eden-PHP/Core.git",
+                "reference": "bb09f562f0d9f18fcc03afadbcf378b52b764ef7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Eden-PHP/Core/zipball/bb09f562f0d9f18fcc03afadbcf378b52b764ef7",
+                "reference": "bb09f562f0d9f18fcc03afadbcf378b52b764ef7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Eden\\Core\\": "src/"
+                },
+                "classmap": [
+                    "src/Decorator.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Blanquera",
+                    "email": "cblanquera@openovate.com"
+                }
+            ],
+            "description": "Eden Core component full of secret sauce",
+            "homepage": "http://eden-php.com",
+            "keywords": [
+                "eden",
+                "library"
+            ],
+            "time": "2015-11-17 05:20:26"
+        },
+        {
+            "name": "eden/curl",
+            "version": "4.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Eden-PHP/Curl.git",
+                "reference": "b3bfb64b87f9310671ccd02be8caf47fe4e45fd8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Eden-PHP/Curl/zipball/b3bfb64b87f9310671ccd02be8caf47fe4e45fd8",
+                "reference": "b3bfb64b87f9310671ccd02be8caf47fe4e45fd8",
+                "shasum": ""
+            },
+            "require": {
+                "eden/core": "4.*",
+                "php": ">=5.4.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Eden\\Curl\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Blanquera",
+                    "email": "cblanquera@openovate.com"
+                }
+            ],
+            "description": "Eden cURL component",
+            "homepage": "http://eden-php.com",
+            "keywords": [
+                "eden",
+                "library"
+            ],
+            "time": "2015-10-13 03:42:19"
+        },
+        {
+            "name": "eden/oauth",
+            "version": "4.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Eden-PHP/Oauth.git",
+                "reference": "59a22c1866862d5ec162f77c531fb1715ca44e16"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Eden-PHP/Oauth/zipball/59a22c1866862d5ec162f77c531fb1715ca44e16",
+                "reference": "59a22c1866862d5ec162f77c531fb1715ca44e16",
+                "shasum": ""
+            },
+            "require": {
+                "eden/curl": "4.*",
+                "php": ">=5.4.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Eden\\Oauth\\": "/src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Blanquera",
+                    "email": "cblanquera@openovate.com"
+                }
+            ],
+            "description": "Eden Oauth1 and Oauth2 component",
+            "homepage": "http://eden-php.com",
+            "keywords": [
+                "eden",
+                "library"
+            ],
+            "time": "2015-10-13 05:46:03"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
